@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.springboot.jpa_and_hibernate.course.Course;
+
 @Component // Spring should identify this component so we will name it as component
 public class CourseCommandLineRunner implements CommandLineRunner {
 
@@ -13,7 +15,12 @@ public class CourseCommandLineRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		repository.insert();
+		repository.insert(new Course(1, "Spring JDBC", "Sindhu Krovvidi"));
+		repository.insert(new Course(2, "Spring JDBC 2", "Sindhu Krovvidi"));
+		repository.insert(new Course(3, "Spring JDBC 3", "Sindhu Krovvidi"));
+		
+		repository.deleteById(1);
+		
 	}
 
 }
