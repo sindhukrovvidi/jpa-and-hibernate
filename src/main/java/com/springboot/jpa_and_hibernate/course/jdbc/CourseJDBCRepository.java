@@ -13,7 +13,7 @@ public class CourseJDBCRepository {
 	private static String INSERT_QURY = """
 			insert into course (id, name, author) values (1,'JDBC', 'Sindhu');
 			""";
-//	Once the query is made, we need to tell the Spring application to run it at the application launch. for this we will be using CommandLineRunnes.
+//	Once the query is made, we need to tell  Spring application to run it at the application launch. for this we will be using CommandLineRunnes.
 	public void insert() {
 		springJdbcTemplate.update(INSERT_QURY);
 	}
