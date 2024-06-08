@@ -25,6 +25,11 @@ public class Course {
 		this.author = author;
 	}
 
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", author=" + author + "]";
+	}
+
 	private long id;
 	private String name;
 	private String author;

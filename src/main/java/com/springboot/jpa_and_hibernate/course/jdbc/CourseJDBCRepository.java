@@ -1,6 +1,7 @@
 package com.springboot.jpa_and_hibernate.course.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,9 @@ public class CourseJDBCRepository {
 	private static String DELETE_QURY = """
 			delete from course where id = ?;
 			""";
+	private static String SELECT_QUERY = """
+			select * from course where id = ?;
+			""";
 	
 //	Once the query is made, we need to tell  Spring application to run it at the application launch. for this we will be using CommandLineRunnes.
 	public void insert(Course course) {
@@ -27,5 +31,9 @@ public class CourseJDBCRepository {
 	
 	public void deleteById(long id) {
 		springJdbcTemplate.update(DELETE_QURY, id);
+	}
+	
+	public Course findById(long id) {
+		return springJdbcTemplate.queryForObject(SELECT_QUERY, new BeanPropertyRowMapper<>(Course.class), id);
 	}
 }
